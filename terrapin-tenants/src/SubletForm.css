@@ -1,0 +1,16 @@
+.sublet-form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 0 auto;
+  }
+  
+  .form-field {
+    margin-bottom: 20px;
+  }
+  
+  .submit-button {
+    width: 100px;
+    margin: 0 auto;
+  }
+  

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "terrapin-terrace-tenancies",
+  "private_key_id": "6900052680b51e1c43d0404bea49a35476896ad4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCwA+hi4E7bhw0t\nxI1b0mKsgonAaQSePGScmwFtgtNPrtVdD+dxslQT7eENjXacC2TjR1rVziMUuNjm\nmN+b/6DltK7pN5W/GgqgJSx81QK3NmHZDaMnPV/DkxopdUhLK8r6ioSP1uxXJVhb\ngSTP60BjMoVif7JCTCalx6c6+E2wGqVToUNLPC7sxaK/sNbhJFWQJV/QnRdlCOlN\n1+uCvf8vQjC4SX9C4eVn2rwgdrPMGDq+gxwCvwnKl3RZeoqpuvdBuzCFFoYDbi7l\nTEW3fooeISmTTqP8rWPFQ/SF/cDmYh0qW7s7W2ukM+nmotNR+xwKO8kR26fRgJto\nxbN58/27AgMBAAECggEAO32OoUCsFoGeYC4zEupYRHM4aMp175985/tx75gMoL14\nSuRxttltlnDLpH+AK7ykJDc9Sc9Kxxm04beguEKdmJXJmnSZjcYY+kimMSjzqoXc\na3azArO5Nsp0yLdlsFaEW8rOhClBpzCtnPvYu9eI4x4zu/dqAgNn+pcw+/rpkw/W\nx0uo+iimEonppoVi+pjd6owpcArCpA4wjSG/NStwOTMn8pgWWKLw7Zv/TOjERbr/\nx1aB0VHmdQsYmuPYPVSXft1LX7WD2EHxh4xuDUHGzaoHxR8RM+SB+GmE0HP8hukz\nARbm8mZ5ITkWTvoPGRL2b+6WdkY634V4cswoRQqw2QKBgQDf9hyUvgeC+gW6aAb0\na+3xMNkkMU4saCun1dEl+UBmqWkqW0H/dgLs8DK5AsyQrY2qWRbzZ9FGn4KQeCAp\npwBHhEm3TuZl0f5q2vZxRLFY+lFtH5vogjOxq6wMTz2MDdvD82fNbmhH4aHw6qWu\nUqdvTF8cCHN7qH9FXslxH6GReQKBgQDJMetIzxkmrE1iVJyvqG4wyYgWnQvpkAOI\nQ+Haix5WAkxUkZphs9WkoVI8JAO6L1BE15r2wTiq9lDtui4eZ2asNbML/sEyulXT\n8AIaEsAzatg1WeMGzD2oOCsZJ1F+VYak6WGea+pj9WWOucvCYhbNZeSxL/opocrZ\ne52UvJsP0wKBgCYP67eTvC8UUtjlSRlNJnkxNhYikwiVA6ZYfl0XyUwpSog6TjMe\nWUzvXY933FBSTps+3NmtMTHxdf0bjUvG6BM/dk/DBwES+UwrvmptpD5c/G2xS4vu\nZN6zMGA/L1SYHltlCKUvOGXPAPiyyEmiHnaZ4igff5DqiAbAHzgsigbxAoGBAJKl\nJ/FxwctGW0EImwwNoAM/YUnaPgyHQ4vWrpA0RnA6TJh3aCc+hMHyM5ZSScUzJzaG\nUBT60OsLjgE4atUOWO+8VDyx+u+WkWhgz6dhc2YGwoBge/FAfNBX4FH9LpD+lZ0t\n3lEyJy2kd9mH4tRT2nrrgb0EUzp1Cv1p9Hms3vixAoGBAJwDDpfL0PwaWGZ1xc6M\n0D3KPB41b9oPn1aFbjMB8c9gVZmvv3vYCE7newsFuMrweZsiSykhGSR/RgqA/UeJ\nCNZd14qC3OBnLG5ygWbej60XBq/4A9og0FaTA7FDB+BNGquSFoZhv9kg4kTyUelT\nCHXZLTLXWQ+4zjnx1Seq/cnK\n-----END PRIVATE KEY-----\n",
+  "client_email": "manager@terrapin-terrace-tenancies.iam.gserviceaccount.com",
+  "client_id": "118375214133200390518",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/manager%40terrapin-terrace-tenancies.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
