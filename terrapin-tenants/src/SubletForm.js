@@ -22,24 +22,27 @@ const SubletForm = () => {
   };
 
   const [imageUpload, setImageUpload] = useState(null);
-  const uploadImage = () => {
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let imgUrl = null;
     if (imageUpload == null) return null;
     const imageRef = ref(storage, `images/${sublet.name + imageUpload.name + v4()}`)
-    uploadBytes(imageRef,imageUpload).then(() => {
+    await uploadBytes(imageRef,imageUpload).then(() => {
       alert("Image Uploaded")
+    });
+    await getDownloadURL(imageRef).then((url) =>{
+      console.log("Url pre return: " + url);
+      imgUrl = url;
     })
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    uploadImage ();
+    console.log("Image url after retrun: " + imgUrl);
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var requestOptions = {
         method: "post",
         headers: myHeaders,
         redirect: "follow",
-        body: JSON.stringify([[sublet.name, sublet.email, sublet.address, sublet.description, sublet.price]])
+        body: JSON.stringify([[sublet.name, sublet.email, sublet.address, sublet.description, sublet.price, imgUrl]])
     };
 
     fetch("https://v1.nocodeapi.com/ashwathrajesh/google_sheets/jZBNWUfljzRUOzov?tabId=Sheet1", requestOptions)
