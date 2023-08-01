@@ -5,10 +5,16 @@ import ReactDOM from "react-dom/client";
 import Home from './Home';
 import Listings from './Listings';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CustomNavbar from './components/CustomNavbar';
 const App = () => {
   return (
-    <div>
-      <Navbar />
+    <div
+    style = {{
+      backgroundColor: 'white',
+      color: "#BF0101"
+    }}
+    >
+      <CustomNavbar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home/>}/>

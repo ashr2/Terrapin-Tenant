@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 400px;
-    margin: 0 auto;
+    margin: 0 auto; 
   }
   
   .form-field {
@@ -13,4 +13,4 @@
     width: 100px;
     margin: 0 auto;
   }
-  
+ 

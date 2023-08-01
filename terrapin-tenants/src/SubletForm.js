@@ -22,27 +22,27 @@ const SubletForm = () => {
   };
 
   const [imageUpload, setImageUpload] = useState(null);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    let imgUrl = null;
+  const uploadImage = async () => {
     if (imageUpload == null) return null;
     const imageRef = ref(storage, `images/${sublet.name + imageUpload.name + v4()}`)
     await uploadBytes(imageRef,imageUpload).then(() => {
       alert("Image Uploaded")
-    });
-    await getDownloadURL(imageRef).then((url) =>{
-      console.log("Url pre return: " + url);
-      imgUrl = url;
     })
-    console.log("Image url after retrun: " + imgUrl);
+
+    const downloadURL = await getDownloadURL(imageRef)
+    return downloadURL
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const imageURL = await uploadImage ();
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var requestOptions = {
         method: "post",
         headers: myHeaders,
         redirect: "follow",
-        body: JSON.stringify([[sublet.name, sublet.email, sublet.address, sublet.description, sublet.price, imgUrl]])
+        body: JSON.stringify([[sublet.name, sublet.email, sublet.address, sublet.description, sublet.price, imageURL]])
     };
 
     fetch("https://v1.nocodeapi.com/ashwathrajesh/google_sheets/jZBNWUfljzRUOzov?tabId=Sheet1", requestOptions)
@@ -80,6 +80,7 @@ const SubletForm = () => {
             <input type="file" className="form-control" name="image" onChange={(event) => {setImageUpload(event.target.files[0])}} />
           </label>
         </div>
+
         <button onClick={handleSubmit}type="submit" value="Submit" className="btn btn-primary">Submit</button>
       </form>
     </div>
