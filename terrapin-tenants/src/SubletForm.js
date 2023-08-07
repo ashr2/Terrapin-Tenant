@@ -13,6 +13,7 @@ const SubletForm = () => {
     image:null
   });
 
+  const apartmentBuildings = ["Tempo", "Aster"].sort()
   const handleChange = (e) => {
     if (e.target.name === 'image') {
       setSublet({ ...sublet, image: e.target.files[0] });  // handle file inputs
@@ -77,8 +78,13 @@ const SubletForm = () => {
           <input type="email" class="form-control" name="email" onChange={handleChange} aria-describedby="emailHelp" placeholder="Enter email"/>
         </div>
         <div onSubmit={handleSubmit} className="mb-3 form-group">
-          <label> Address of the Sublet:</label>
-          <input type="text" className="form-control" name="address" onChange={handleChange} />
+          <label for="inputState">Building</label>
+          <select id="inputState" className="form-control">
+            <option selected>Choose...</option>
+            {apartmentBuildings.map((building, index) => (
+              <option> {building} </option>
+            ))}
+          </select>
         </div>
         <div onSubmit={handleSubmit} className="mb-3 form-group">
           <label> Description of the Sublet: </label>
