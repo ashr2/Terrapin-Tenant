@@ -21,11 +21,24 @@ const SubletForm = () => {
     }
   };
 
-  const [imageUpload, setImageUpload] = useState(null);
-  const uploadImage = async () => {
-    if (imageUpload == null) return null;
-    const imageRef = ref(storage, `images/${sublet.name + imageUpload.name + v4()}`)
-    await uploadBytes(imageRef,imageUpload).then(() => {
+  const [kitchenImageUpload, setKitchenImageUpload] = useState(null);
+  const [livingRoomImageUpload, setLivingRoomImageUpload] = useState(null);
+
+  const uploadKitchenImage = async () => {
+    if (kitchenImageUpload == null) return null;
+    const imageRef = ref(storage, `images/${sublet.name + kitchenImageUpload.name + v4()}`)
+    await uploadBytes(imageRef,kitchenImageUpload).then(() => {
+      alert("Image Uploaded")
+    })
+
+    const downloadURL = await getDownloadURL(imageRef)
+    return downloadURL
+  };
+
+  const uploadLivingRoomImage = async () => {
+    if (livingRoomImageUpload == null) return null;
+    const imageRef = ref(storage, `images/${sublet.name + livingRoomImageUpload.name + v4()}`)
+    await uploadBytes(imageRef,livingRoomImageUpload).then(() => {
       alert("Image Uploaded")
     })
 
@@ -35,14 +48,15 @@ const SubletForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const imageURL = await uploadImage ();
+    const kitchenImageURL = await uploadKitchenImage ();
+    const livingRoomImageURL = await uploadLivingRoomImage();
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var requestOptions = {
         method: "post",
         headers: myHeaders,
         redirect: "follow",
-        body: JSON.stringify([[sublet.name, sublet.email, sublet.address, sublet.description, sublet.price, imageURL]])
+        body: JSON.stringify([[sublet.name, sublet.email, sublet.address, sublet.description, sublet.price, kitchenImageURL, livingRoomImageURL]])
     };
 
     fetch("https://v1.nocodeapi.com/ashwathrajesh/google_sheets/jZBNWUfljzRUOzov?tabId=Sheet1", requestOptions)
@@ -76,11 +90,16 @@ const SubletForm = () => {
         </div>
         <div onSubmit={handleSubmit} className="mb-3 form-group">
           <label className="mb-3 form-control-file">
-            Upload An Image Of Your Apartment:
-            <input type="file" className="form-control" name="image" onChange={(event) => {setImageUpload(event.target.files[0])}} />
+            Upload An Image Of Your Kitchen:
+            <input type="file" className="form-control" name="image" onChange={(event) => {setKitchenImageUpload(event.target.files[0])}} />
           </label>
         </div>
-
+        <div onSubmit={handleSubmit} className="mb-3 form-group">
+          <label className="mb-3 form-control-file">
+            Upload An Image Of Your Living Room:
+            <input type="file" className="form-control" name="image" onChange={(event) => {setLivingRoomImageUpload(event.target.files[0])}} />
+          </label>
+        </div>
         <button onClick={handleSubmit}type="submit" value="Submit" className="btn btn-primary">Submit</button>
       </form>
     </div>

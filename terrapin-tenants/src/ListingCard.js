@@ -12,7 +12,7 @@ import {
 } from 'mdb-react-ui-kit';
 import {Image} from 'react-bootstrap';
 
-function ListingCard({ imageUrl, title, text, buttonLabel }) {
+function ListingCard({ kitchenImageURL, livingRoomURL, title, text, buttonLabel }) {
   return (
         <MDBCard
         style ={{
@@ -20,20 +20,30 @@ function ListingCard({ imageUrl, title, text, buttonLabel }) {
           color:"#F0E681"
         }}
         >
-
-            <Image
-              src={imageUrl }
-              alt="First slide"
-              fluid
-            />
-
+        <div id="carouselExampleControls" className="carousel slide carousel-fade" data-ride="carousel"
+          onClick={console.log(livingRoomURL)}
+        >
+          <div className="carousel-inner">
+              <div className="carousel-item active" data-interval = "10000">
+                <img src={kitchenImageURL} className="d-block w-100" alt="..."/>
+              </div>
+              <div className="carousel-item" data-interval = "10000">
+                <img src={livingRoomURL} className="d-block w-100" alt="..."/>
+              </div>
+          </div>
+          <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          </a>
+          <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          </a>
+        </div>
         <MDBCardBody>
           <MDBCardTitle>{title}</MDBCardTitle>
           <MDBCardText>
             {text}
           </MDBCardText>
-          <MDBCardFooter 
-          onClick={console.log("Hello")}
+          <MDBCardFooter
           style ={{backgroundColor:"#9C0203", color:"#F0E681", textAlign:"center"}}
           color='danger' href='#'>{buttonLabel}</MDBCardFooter>
         </MDBCardBody>

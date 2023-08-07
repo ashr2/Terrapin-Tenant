@@ -17,11 +17,12 @@ const Lightbox = ({ images }) => {
 
   return (
     <div>
+      {console.log(images)}
       {images.map((image, index) => (
         <img
             className = "m-2 rounded"
             key={index}
-            src={image.Link}
+            src={image.Kitchen}
             alt={""}
             onClick={() => handleImageClick(image)}
             style={{ cursor: 'pointer', maxWidth: '30%', height: 'auto' }}
@@ -33,7 +34,8 @@ const Lightbox = ({ images }) => {
           {selectedImage && (
             <ListingCard
                 title = {selectedImage.Name}
-                imageUrl={selectedImage.Link}
+                kitchenImageURL={selectedImage.Kitchen}
+                livingRoomURL = {selectedImage.LRoom}
                 text = {selectedImage.Description}
                 buttonLabel={'$'+selectedImage.Price}
                 rounded
