@@ -7,6 +7,9 @@ import Listings from './Listings';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CustomNavbar from './components/CustomNavbar';
 const App = () => {
+  const buildings = ["Alloy", "Terrapin Row", "Parkside", 
+  "The Varsity", "Commons", "Aster", "Off-campus House", "The Nine",
+  "View", "Landmark", "Standard", "College Park Towers", "Aspen Heights"].sort();
   return (
     <div
     style = {{
@@ -17,8 +20,8 @@ const App = () => {
       <CustomNavbar />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/add-listing" element={<SubletForm/>}/>
+          <Route path="/" element={<Home buildings={buildings}/>}/>
+          <Route path="/add-listing" element={<SubletForm buildings = {buildings}/>}/>
           <Route path="/view-listings" element={<Listings/>}/>
         </Routes>
       </BrowserRouter>

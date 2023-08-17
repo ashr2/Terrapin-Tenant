@@ -1,11 +1,15 @@
 import React from 'react';
-import { NavItem, Navbar } from 'react-bootstrap';
+import { NavItem, Navbar, NavbarBrand, Image} from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
 
 const CustomNavbar = () => {
   return (
-    <Navbar>
+    <Navbar style={{ height: '60px', alignItems: 'center' }}>
       <Nav>
+        <Image
+        src = "https://firebasestorage.googleapis.com/v0/b/leasing-app-375502.appspot.com/o/DALL%C2%B7E%202023-03-22%2010.35.56%20-%20High-end%20premium%20modern%20logo%20of%20the%20letters%20TTT%2C%20featured%20on%2099designs%2C%20red%20and%20gold%20theme.png?alt=media&token=f90b5dce-daeb-4258-af0f-746339c5ce10"
+        style={{ height: '50px', objectFit: 'contain' }}
+        />
         <NavItem>
           <a href="/">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -13,7 +17,7 @@ const CustomNavbar = () => {
           </svg>
           </a>
         </NavItem>
-        <li><a href="/view-listings">Browse Listings</a></li>
+        <li><a href="/view-listings">Browse All Listings</a></li>
         <li><a href="/add-listing">Add Listing</a></li>
       </Nav>
     </Navbar>

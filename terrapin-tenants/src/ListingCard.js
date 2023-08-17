@@ -12,7 +12,7 @@ import {
 } from 'mdb-react-ui-kit';
 import {Image} from 'react-bootstrap';
 
-function ListingCard({ kitchenImageURL, livingRoomURL, title, text, buttonLabel }) {
+function ListingCard({data, kitchenImageURL, livingRoomURL, title, text, buttonLabel }) {
   return (
         <MDBCard
         style ={{
@@ -20,9 +20,7 @@ function ListingCard({ kitchenImageURL, livingRoomURL, title, text, buttonLabel 
           color:"#F0E681"
         }}
         >
-        <div id="carouselExampleControls" className="carousel slide carousel-fade" data-ride="carousel"
-          onClick={console.log(livingRoomURL)}
-        >
+        <div id="carouselExampleControls" className="carousel slide carousel-fade" data-ride="carousel">
           <div className="carousel-inner">
               <div className="carousel-item active" data-interval = "10000">
                 <img src={kitchenImageURL} className="d-block w-100" alt="..."/>
@@ -39,7 +37,7 @@ function ListingCard({ kitchenImageURL, livingRoomURL, title, text, buttonLabel 
           </a>
         </div>
         <MDBCardBody>
-          <MDBCardTitle>{title}</MDBCardTitle>
+          <MDBCardTitle>{data.Email}</MDBCardTitle>
           <MDBCardText>
             {text}
           </MDBCardText>

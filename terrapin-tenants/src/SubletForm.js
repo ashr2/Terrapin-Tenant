@@ -3,7 +3,8 @@ import './SubletForm.css';
 import {storage} from './firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import {v4} from 'uuid';
-const SubletForm = () => {
+import { Form } from 'react-bootstrap';
+const SubletForm = ({buildings}) => {
   const [sublet, setSublet] = useState({
     name: '',
     email: '',
@@ -13,7 +14,11 @@ const SubletForm = () => {
     image:null
   });
 
-  const apartmentBuildings = ["Tempo", "Aster"].sort()
+  const handleBuildingChange = (e) => {
+    setSublet({ ...sublet, address: e.target.value });
+  };
+
+  const apartmentBuildings = buildings
   const handleChange = (e) => {
     if (e.target.name === 'image') {
       setSublet({ ...sublet, image: e.target.files[0] });  // handle file inputs
@@ -62,37 +67,37 @@ const SubletForm = () => {
 
     fetch("https://v1.nocodeapi.com/ashwathrajesh/google_sheets/jZBNWUfljzRUOzov?tabId=Sheet1", requestOptions)
       .then(response => response.text())
-      .then(result => console.log(result))
+      .then(result => console.log("Success"))
       .catch(error => console.log('error', error));
   };
 
   return (
     <div className='container-sm mt-3 form-group-sm'>
-      <form>
+      <Form>
         <div onSubmit={handleSubmit} className="mb-3 form-group">
-          <label> Your Name: </label>
+          <label> Preferred Name: </label>
           <input type="text" class="form-control" name="name" onChange={handleChange} />
         </div>
         <div onSubmit={handleSubmit} className="mb-3 form-group">
-          <label>Your Email:</label>
+          <label>Email:</label>
           <input type="email" class="form-control" name="email" onChange={handleChange} aria-describedby="emailHelp" placeholder="Enter email"/>
         </div>
         <div onSubmit={handleSubmit} className="mb-3 form-group">
           <label for="inputState">Building</label>
-          <select id="inputState" className="form-control">
+          <select id="inputState" className="form-control" value = {sublet.address} onChange={handleBuildingChange}>
             <option selected>Choose...</option>
             {apartmentBuildings.map((building, index) => (
-              <option> {building} </option>
+              <option key ={index} value={building}> {building} </option>
             ))}
           </select>
         </div>
-        <div onSubmit={handleSubmit} className="mb-3 form-group">
+        <div onSubmit={handleSubmit} className="mb-3 form-group w-25">
           <label> Description of the Sublet: </label>
             <textarea type="text" className="form-control" name="description" onChange={handleChange}/>
         </div>
         <div onSubmit={handleSubmit} className="mb-3 form-group">
           <label> Monthly Price: </label>
-            <input type="number" className="mb-3 form-control" name="price" onChange={handleChange} />
+          <input type="number" className="mb-3 form-control" name="price" onChange={handleChange} />
         </div>
         <div onSubmit={handleSubmit} className="mb-3 form-group">
           <label className="mb-3 form-control-file">
@@ -107,7 +112,7 @@ const SubletForm = () => {
           </label>
         </div>
         <button onClick={handleSubmit}type="submit" value="Submit" className="btn btn-primary">Submit</button>
-      </form>
+      </Form>
     </div>
   );
 };

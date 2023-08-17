@@ -33,6 +33,7 @@ const Lightbox = ({ images }) => {
         <Modal.Body>
           {selectedImage && (
             <ListingCard
+                data = {selectedImage}
                 title = {selectedImage.Name}
                 kitchenImageURL={selectedImage.Kitchen}
                 livingRoomURL = {selectedImage.LRoom}

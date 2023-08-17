@@ -1,34 +1,53 @@
 import React, { useState } from 'react';
 import './SubletForm.css';
-import {storage} from './firebase';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import {v4} from 'uuid';
-import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
-const Home = () => {
-  const [isShown, setIsShown] = useState(false);
+import Lightbox from './Lightbox';
+import { useEffect } from 'react';
+const Home = ({buildings}) => {
 
-  const [sublet, setSublet] = useState({
-    name: '',
-    email: '',
-    address: '',
-    description: '',
-    price: '',
-    kitchen_image:null,
-    living_room_image: null
-  });
+  const apartmentBuildings = buildings;
+  const [sheetData, setSheetData] = useState([]);
+  const [error, setError] = useState(false);
+  const [selectedBuildings, setSelectedBuildings] = useState([]);
+
+  const [low, setLow] = useState("");
+  const [high, setHigh] = useState("");
 
   const handleChange = (e) => {
-    if (e.target.name === 'living_room_image' || e.target.name === 'kitchen_image') {
-      setSublet({ ...sublet, image: e.target.files[0] });  // handle file inputs
-    } else {
-      setSublet({ ...sublet, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === "low") {
+      setLow(value);
+    } else if (name === "high") {
+      setHigh(value);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
   };
+
+  const handleCheckboxChange = (e) => {
+    const value = e.target.value;
+  
+    if (e.target.checked) {
+      setSelectedBuildings(prevState => [...prevState, value]);
+    } else {
+      setSelectedBuildings(prevState => prevState.filter(item => item !== value));
+    }
+  };
+
+  useEffect(() => {
+    const nocodeAPI = "https://v1.nocodeapi.com/ashwathrajesh/google_sheets/jZBNWUfljzRUOzov?tabId=Sheet1&perPage=100&page=1";
+    
+    fetch(nocodeAPI)
+      .then(response => response.json())
+      .then(data => setSheetData(data.data))
+      .catch(error => {
+          console.log("Error");
+          setError(true);
+      });
+  }, []);
 
   return (
     <div className='container-sm mt-3 form-group-sm'>
@@ -37,26 +56,50 @@ const Home = () => {
         <Accordion.Item eventKey="0">
           <Accordion.Header>Price Range</Accordion.Header>
           <Accordion.Body>
-            <div onSubmit={handleSubmit} className="mb-3 form-group">
-              <input type="number" className="mb-3 form-control" name="price" onChange={handleChange} />
-            </div>
+              <div onSubmit={handleSubmit} className="mb-3 form-group d-flex align-items-center">
+                <span className="me-2"><b>Low</b></span>
+                <input type="number" className="form-control" name="low" onChange={handleChange} />
+              </div>
+              <div onSubmit={handleSubmit} className="mb-3 form-group d-flex align-items-center">
+                <span className="me-2"><b>High</b></span>
+                <input type="number" className="form-control" name="high" onChange={handleChange} />
+              </div>
           </Accordion.Body>
         </Accordion.Item>
         <Accordion.Item eventKey="1">
-          <Accordion.Header>Accordion Item #2</Accordion.Header>
+          <Accordion.Header>Building</Accordion.Header>
           <Accordion.Body>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+              {apartmentBuildings.map((building, index) => (
+              <div class="form-check">
+                <input 
+                class = "form-check-input" 
+                type="checkbox" 
+                value={building}
+                id={`defaultCheck${index}`}
+                onChange = {handleCheckboxChange}
+                checked = {selectedBuildings.includes(building)}
+                />
+                <label class="form-check-label" for="defaultCheck1">
+                  {building}
+                </label>
+              </div>
+              ))}
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
-        <button onClick={handleSubmit}type="submit" value="Submit" className="btn btn-primary mt-3">Submit</button>
       </form>
+
+      <div>
+        <Lightbox images = {sheetData.filter(
+          function(element) {
+            return ((!low || element.Price >= Number(low))
+              && (!high || element.Price <= Number(high))
+              && (selectedBuildings.length === 0 || selectedBuildings.includes(element.Address))
+            )
+          }
+        )}      
+        />
+      </div>
     </div>
   );
 };
