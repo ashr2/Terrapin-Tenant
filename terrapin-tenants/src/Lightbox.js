@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import ListingCard from './ListingCard';
 import Image from 'react-bootstrap';
+import './App.css'
 const Lightbox = ({ images }) => {
   const [show, setShow] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -16,7 +17,7 @@ const Lightbox = ({ images }) => {
   };
 
   return (
-    <div>
+    <div className="image-grid">
       {console.log(images)}
       {images.map((image, index) => (
         <img
@@ -28,7 +29,7 @@ const Lightbox = ({ images }) => {
             style={{ cursor: 'pointer', maxWidth: '30%', height: 'auto' }}
         />
       ))}
-
+      
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Body>
           {selectedImage && (

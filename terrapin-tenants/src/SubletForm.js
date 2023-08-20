@@ -34,7 +34,7 @@ const SubletForm = ({buildings}) => {
     if (kitchenImageUpload == null) return null;
     const imageRef = ref(storage, `images/${sublet.name + kitchenImageUpload.name + v4()}`)
     await uploadBytes(imageRef,kitchenImageUpload).then(() => {
-      alert("Image Uploaded")
+      console.log("Image Uploaded")
     })
 
     const downloadURL = await getDownloadURL(imageRef)
@@ -45,7 +45,7 @@ const SubletForm = ({buildings}) => {
     if (livingRoomImageUpload == null) return null;
     const imageRef = ref(storage, `images/${sublet.name + livingRoomImageUpload.name + v4()}`)
     await uploadBytes(imageRef,livingRoomImageUpload).then(() => {
-      alert("Image Uploaded")
+      console.log("Image Uploaded")
     })
 
     const downloadURL = await getDownloadURL(imageRef)
@@ -65,22 +65,22 @@ const SubletForm = ({buildings}) => {
         body: JSON.stringify([[sublet.name, sublet.email, sublet.address, sublet.description, sublet.price, kitchenImageURL, livingRoomImageURL]])
     };
 
-    fetch("https://v1.nocodeapi.com/ashwathrajesh/google_sheets/jZBNWUfljzRUOzov?tabId=Sheet1", requestOptions)
+    fetch("https://v1.nocodeapi.com/ashwathrajesh/google_sheets/jZBNWUfljzRUOzov?tabId=Apartments", requestOptions)
       .then(response => response.text())
-      .then(result => console.log("Success"))
-      .catch(error => console.log('error', error));
+      .then(result => alert("Form Submitted"))
+      .catch(error => alert("Error submitting form, try again"));
   };
 
   return (
     <div className='container-sm mt-3 form-group-sm'>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <div onSubmit={handleSubmit} className="mb-3 form-group">
           <label> Preferred Name: </label>
-          <input type="text" class="form-control" name="name" onChange={handleChange} />
+          <input type="text" class="form-control" name="name" onChange={handleChange} required/>
         </div>
         <div onSubmit={handleSubmit} className="mb-3 form-group">
           <label>Email:</label>
-          <input type="email" class="form-control" name="email" onChange={handleChange} aria-describedby="emailHelp" placeholder="Enter email"/>
+          <input type="email" class="form-control" name="email" onChange={handleChange} aria-describedby="emailHelp" placeholder="Enter email" required/>
         </div>
         <div onSubmit={handleSubmit} className="mb-3 form-group">
           <label for="inputState">Building</label>
@@ -97,21 +97,21 @@ const SubletForm = ({buildings}) => {
         </div>
         <div onSubmit={handleSubmit} className="mb-3 form-group">
           <label> Monthly Price: </label>
-          <input type="number" className="mb-3 form-control" name="price" onChange={handleChange} />
+          <input type="number" className="mb-3 form-control" name="price" onChange={handleChange} required/>
         </div>
         <div onSubmit={handleSubmit} className="mb-3 form-group">
           <label className="mb-3 form-control-file">
             Upload An Image Of Your Kitchen:
-            <input type="file" className="form-control" name="image" onChange={(event) => {setKitchenImageUpload(event.target.files[0])}} />
+            <input type="file" className="form-control" name="image" onChange={(event) => {setKitchenImageUpload(event.target.files[0])}} required/>
           </label>
         </div>
         <div onSubmit={handleSubmit} className="mb-3 form-group">
           <label className="mb-3 form-control-file">
             Upload An Image Of Your Living Room:
-            <input type="file" className="form-control" name="image" onChange={(event) => {setLivingRoomImageUpload(event.target.files[0])}} />
+            <input type="file" className="form-control" name="image" onChange={(event) => {setLivingRoomImageUpload(event.target.files[0])}} required/>
           </label>
         </div>
-        <button onClick={handleSubmit}type="submit" value="Submit" className="btn btn-primary">Submit</button>
+        <button type="submit" value="Submit" className="btn btn-primary">Submit</button>
       </Form>
     </div>
   );

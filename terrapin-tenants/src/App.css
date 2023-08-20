@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.image-grid img {
+  flex-basis: calc(30%); /* considering the margin of 2*5px */
+  margin: 5px; 
+}
+
+.image-grid Card {
+  flex-basis: calc(30%);
+  margin: 5px;
+}

@@ -38,6 +38,7 @@ function ListingCard({data, kitchenImageURL, livingRoomURL, title, text, buttonL
         </div>
         <MDBCardBody>
           <MDBCardTitle>{data.Email}</MDBCardTitle>
+          <h6>{data.Address}</h6>
           <MDBCardText>
             {text}
           </MDBCardText>
