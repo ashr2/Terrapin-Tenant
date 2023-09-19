@@ -1,9 +1,8 @@
 import React from 'react';
 import Card from './Card.js';
-
 const Homepage = () => {
     return (
-        <div className="container mt-5">
+        <div className="container mt-5" style = {{color:'#F0E681'}}>
             <div className="text-center">
                 <h1 className="mb-4">Subletting has never been this easy</h1>
                 <p className="lead">
