@@ -38,7 +38,7 @@ const Home = ({buildings}) => {
   };
 
   useEffect(() => {
-    const nocodeAPI = "https://v1.nocodeapi.com/ashwathrajesh/google_sheets/jZBNWUfljzRUOzov?tabId=Sheet1&perPage=100&page=1";
+    const nocodeAPI = "https://v1.nocodeapi.com/ashwathrajesh/google_sheets/jZBNWUfljzRUOzov?tabId=Apartments&perPage=100&page=1";
     
     fetch(nocodeAPI)
       .then(response => response.json())
@@ -90,6 +90,7 @@ const Home = ({buildings}) => {
       </form>
 
       <div>
+        {console.log(sheetData)}
         <Lightbox images = {sheetData.filter(
           function(element) {
             return ((!low || element.Price >= Number(low))

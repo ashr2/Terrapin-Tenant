@@ -64,8 +64,8 @@ const SubletForm = ({buildings}) => {
         redirect: "follow",
         body: JSON.stringify([[sublet.name, sublet.email, sublet.address, sublet.description, sublet.price, kitchenImageURL, livingRoomImageURL]])
     };
-    console.log(requestOptions.body);
-    fetch("https://v1.nocodeapi.com/ashwathrajesh/google_sheets/jZ", requestOptions)
+
+    fetch("https://v1.nocodeapi.com/ashwathrajesh/google_sheets/jZBNWUfljzRUOzov?tabId=Apartments", requestOptions)
       .then(response => response.text())
       .then(result => alert("Form Submitted"))
       .catch(error => alert("Error submitting form, try again"));
