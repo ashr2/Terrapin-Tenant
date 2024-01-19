@@ -52,3 +52,15 @@
   flex-basis: calc(30%);
   margin: 5px;
 }
+
+a{
+  text-decoration: none;
+}
+
+.filter {
+  margin-bottom: 50px;
+}
+
+body {
+  overscroll-behavior-y: none;
+}

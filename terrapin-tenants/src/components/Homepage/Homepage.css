@@ -1,0 +1,25 @@
+.main-container {
+    display: flex;
+    width:100%;
+}
+
+.filter-container {
+    width: 26%; /* Adjust as needed */
+    position: fixed;
+    /* flex-shrink: 0; */
+    left: 2%    ;
+    top: 10%;
+    bottom: 0;
+    transform: translateY(5%);
+}
+
+.listings-container {
+    margin-left: 30%;
+    margin-top: 20px;
+    flex-grow: 1; /* Takes up the remaining space */
+}
+
+.accordion-item-fixed {
+    width: 100% !important; /* Adjust this as needed */
+    box-sizing: border-box !important; /* Ensures padding and borders are included in the width */
+  }

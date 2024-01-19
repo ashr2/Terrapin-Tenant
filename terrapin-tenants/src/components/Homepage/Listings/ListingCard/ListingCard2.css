@@ -1,0 +1,79 @@
+
+.room-card {
+    display: flex;
+    background: #FFF;
+    /* border: 1px solid #E0E0E0; */
+    border-radius: 8px;
+    padding: 16px;
+    overflow: hidden;
+    max-width: 640px; /* You can set a max-width for the whole card if needed */
+  }
+ .room-card:hover {
+    background-color: #fbf5f5;
+ }
+  .room-image {
+    width: 40%;
+    height: 100%; /* Set a fixed height for the image container */
+    /* background: url('/path-to-your-image.jpg') center center no-repeat; */
+    background-size: cover;
+  }
+  
+  .room-image img {
+    width: 259px;
+    border-radius: 8px;
+    height: 160px; /* This will take the height of the parent .room-image div */
+    object-fit: cover; /* This will cover the area, cropping the image if necessary */
+  }
+  
+  .room-description {
+    color: #9E9E9E;
+  }
+  .room-info {
+    color: #000000;
+  }
+  .room-details {
+    margin-left: 20px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .location-time,
+  .room-info,
+  .date-range,
+  .updated-time,
+  .price {
+    margin-bottom: 8px;
+  }
+  
+  .location {
+    font-weight: bold;
+    color: #000000;
+  }
+  
+  .time {
+    font-size: 0.9em;
+    color: #757575;
+  }
+  
+  .room-info {
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+  
+  .date-range,
+  .updated-time {
+    font-size: 0.9em;
+    color: #9E9E9E;
+  }
+  
+  .price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #000000;
+  }
+  
+  Link {
+    text-decoration: none;
+  }

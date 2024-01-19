@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './SubletForm.css';
-import {storage} from './firebase';
+//import './SubletForm.css';
+import {storage} from '../../firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import {v4} from 'uuid';
 import { Form } from 'react-bootstrap';
@@ -17,7 +17,7 @@ const SubletForm = ({buildings}) => {
   const handleBuildingChange = (e) => {
     setSublet({ ...sublet, address: e.target.value });
   };
-
+  
   const apartmentBuildings = buildings
   const handleChange = (e) => {
     if (e.target.name === 'image') {
@@ -65,7 +65,7 @@ const SubletForm = ({buildings}) => {
         body: JSON.stringify([[sublet.name, sublet.email, sublet.address, sublet.description, sublet.price, kitchenImageURL, livingRoomImageURL]])
     };
 
-    fetch("https://v1.nocodeapi.com/ashwathrajesh/google_sheets/jZBNWUfljzRUOzov?tabId=Apartments", requestOptions)
+    fetch("https://v1.nocodeapi.com/ashwathrajesh/google_sheets/jZBNWUfljzRUOzov?tabId=Sheet1", requestOptions)
       .then(response => response.text())
       .then(result => alert("Form Submitted"))
       .catch(error => alert("Error submitting form, try again"));

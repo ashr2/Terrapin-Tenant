@@ -1,0 +1,65 @@
+.question-container {
+    font-family: 'Arial', sans-serif;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .question {
+    color: #cb2c2c;
+    margin-bottom: 20px;
+  }
+  
+  .options-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .option {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 2px solid #9C0203;
+    border-radius: 5px;
+    color: #9C0203;
+    transition: all 0.3s ease;
+  }
+  
+  .option:hover,
+  .option.selected {
+    background-color: #9C0203;
+    color: #EFE580;
+  }
+  
+  .answer-container {
+    margin-top: 20px;
+  }
+  
+  .answer-header {
+    font-size: 1.2em;
+    color: #9C0203;
+  }
+  
+  .answer-description {
+    font-size: 0.9em;
+    color: #9C0203;
+  }
+  
+  .submit-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #EFE580;
+    color: #9C0203;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;       /* Make the button a block element */
+    width: max-content;   /* Set the width to the content of the button */
+    margin-left: auto;    /* Auto margin for left and right will center the block */
+    margin-right: auto;
+  }
+  
+  .submit-button:hover {
+    background-color: #EFE580;
+  }

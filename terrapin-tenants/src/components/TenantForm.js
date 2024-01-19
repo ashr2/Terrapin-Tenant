@@ -41,8 +41,8 @@ const TenantForm = () => {
           <input type="text" className="form-control" name="name" onChange={handleChange} required/>
         </div>
         <div className="mb-3 form-group">
-          <label>Pronouns*:</label>
-          <input type="text" className="form-control" name="pronouns" onChange={handleChange} required/>
+          <label>Pronouns:</label>
+          <input type="text" className="form-control" name="pronouns" onChange={handleChange}/>
         </div>
         <div className="mb-3 form-group">
           <label>Email*:</label>

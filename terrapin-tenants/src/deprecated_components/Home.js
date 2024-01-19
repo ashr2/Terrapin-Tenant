@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import './SubletForm.css';
+//import './SubletForm.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Lightbox from './Lightbox';
 import { useEffect } from 'react';
+import Listings from '../Listings';
 const Home = ({buildings}) => {
 
   const apartmentBuildings = buildings;
@@ -38,8 +39,7 @@ const Home = ({buildings}) => {
   };
 
   useEffect(() => {
-    const nocodeAPI = "https://v1.nocodeapi.com/ashwathrajesh/google_sheets/jZBNWUfljzRUOzov?tabId=Apartments&perPage=100&page=1";
-    
+    const nocodeAPI = "https://v1.nocodeapi.com/ashwathrajesh/google_sheets/jZBNWUfljzRUOzov?tabId=Sheet1";
     fetch(nocodeAPI)
       .then(response => response.json())
       .then(data => setSheetData(data.data))
@@ -51,7 +51,7 @@ const Home = ({buildings}) => {
 
   return (
     <div className='container-sm mt-3 form-group-sm'>
-      <form>
+      <form className='filter'>
         <Accordion defaultActiveKey={['0']} alwaysOpen>
         <Accordion.Item eventKey="0">
           <Accordion.Header>Price Range</Accordion.Header>
@@ -69,7 +69,7 @@ const Home = ({buildings}) => {
         <Accordion.Item eventKey="1">
           <Accordion.Header>Building</Accordion.Header>
           <Accordion.Body>
-              {apartmentBuildings.map((building, index) => (
+              {apartmentBuildings && apartmentBuildings.map((building, index) => (
               <div class="form-check">
                 <input 
                 class = "form-check-input" 
@@ -90,16 +90,16 @@ const Home = ({buildings}) => {
       </form>
 
       <div>
-        {console.log(sheetData)}
-        <Lightbox images = {sheetData.filter(
+        <Listings/>
+        {/* {console.log(sheetData)}
+        <Lightbox images = {sheetData && sheetData.filter(
           function(element) {
             return ((!low || element.Price >= Number(low))
               && (!high || element.Price <= Number(high))
               && (selectedBuildings.length === 0 || selectedBuildings.includes(element.Address))
             )
           }
-        )}      
-        />
+        )}       */}
       </div>
     </div>
   );

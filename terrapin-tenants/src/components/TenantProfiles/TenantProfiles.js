@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from "./Card.js";
 import React from 'react';
 import { useState, useEffect } from "react";
 const TenantProfiles = () => {

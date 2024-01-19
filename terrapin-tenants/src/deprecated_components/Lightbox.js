@@ -19,7 +19,7 @@ const Lightbox = ({ images }) => {
   return (
     <div className="image-grid">
       {console.log(images)}
-      {images.map((image, index) => (
+      {images && images.map((image, index) => (
         <img
             className = "m-2 rounded"
             key={index}
